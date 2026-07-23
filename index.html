@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Felicidades Dra. Lore!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4fbf7; /* Verde menta muy suave */
+            color: #2e5a44;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-card {
+            background: #ffffff;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1b4332;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #52b788;
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        /* Sección de Métricas / Tarjetas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #b7e4c7;
+        }
+
+        .stat-box span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d6a4f;
+        }
+
+        .stat-box p {
+            margin: 5px 0 0 0;
+            font-size: 0.85rem;
+            color: #40916c;
+        }
+
+        /* Buzón Interactivo */
+        .buzon-container {
+            background: #f8f9fa;
+            border: 2px dashed #74c69d;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .buzon-container:hover {
+            transform: scale(1.02);
+        }
+
+        .cuyo-icon {
+            font-size: 3.5rem;
+            margin: 10px 0;
+        }
+
+        .nota-ocultar {
+            display: none;
+            background: #ffffff;
+            border-left: 5px solid #52b788;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sticker-cuyo {
+            max-width: 200px;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <h1>🎓 ¡Casi Doctora Lore! 🐹</h1>
+        <p class="subtitle">Celebrando a la investigadora más inteligente y dedicada</p>
+
+        <!-- Métricas Divertidas -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span>100%</span>
+                <p>Inteligencia & Talento</p>
+            </div>
+            <div class="stat-box">
+                <span>&infin;</span>
+                <p>Dedicación y Esfuerzo</p>
+            </div>
+            <div class="stat-box">
+                <span>🐹🐹</span>
+                <p>Nivel de Amor por los Cuyo</p>
+            </div>
+        </div>
+
+        <!-- Buzón de Mensaje Especial -->
+        <div class="buzon-container" onclick="abrirCarta()">
+            <h3>📩 Tienes una mención honorífica</h3>
+            <p id="instruccion" style="font-size: 0.9rem; color: #52b788; margin: 0;">¡Haz clic en el cuyo graduado para abrir!</p>
+            <div id="cuyo-btn" class="cuyo-icon">🐹🎓</div>
+
+            <div id="nota" class="nota-ocultar">
+                <!-- Imagen o GIF de Cuyo (puedes cambiar 'cuyo.gif' por el archivo que subas) -->
+                <div style="text-align: center;">
+                    <img src="cuyo.gif" alt="Cuyo celebrando" class="sticker-cuyo" onerror="this.style.display='none'">
+                </div>
+                
+                <p style="font-style: italic; color: #1b4332; line-height: 1.5;">
+                    "¡Querida Lore! Tu dedicación, disciplina e inteligencia son admirables. Estar a nada de titularte del doctorado es el reflejo de todo tu trabajo constante y tu amor por la ciencia. ¡El gremio científico (y el gremio de los cuyos) está muy orgulloso de ti!"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cartaAbierta = false;
+
+        function abrirCarta() {
+            const cuyoBtn = document.getElementById("cuyo-btn");
+            const nota = document.getElementById("nota");
+            const instruccion = document.getElementById("instruccion");
+
+            if (!cartaAbierta) {
+                cuyoBtn.innerHTML = "🎉🐹✨";
+                nota.style.display = "block";
+                instruccion.innerHTML = "Haz clic de nuevo para cerrar";
+                cartaAbierta = true;
+            } else {
+                cuyoBtn.innerHTML = "🐹🎓";
+                nota.style.display = "none";
+                instruccion.innerHTML = "¡Haz clic en el cuyo graduado para abrir!";
+                cartaAbierta = false;
+            }
+        }
+    </script>
+</body>
+</html>
